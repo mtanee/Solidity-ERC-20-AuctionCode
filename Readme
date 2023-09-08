@@ -1,0 +1,44 @@
+This repository contains a simple Ethereum smart contract written in Solidity for conducting auctions. It allows users to place bids and the owner of the contract to end the auction and declare a winner. Below is an overview of the functionality and usage of the Auction smart contract.
+
+Contract Details
+Name: Auction
+License: GPL-3.0
+Solidity Version: >=0.7.0 <0.9.0
+Features
+Bidding: Participants can place bids with a specified amount.
+
+Auction Duration: The owner of the contract sets the duration of the auction during contract deployment.
+
+Ending the Auction: The owner can end the auction when the auction's duration has passed.
+
+Withdraw Funds: Participants can withdraw their bid amount if they were not the highest bidder or if the auction has ended.
+
+Events: The contract emits events for new bids and when the auction ends.
+
+Smart Contract Functions
+constructor(uint _durationMinutes)
+Initializes the contract with the owner and the auction's end time based on the given duration in minutes.
+bid()
+Allows participants to place bids. Bids must be higher than the current highest bid.
+endAuction()
+Only the owner can call this function to end the auction once the auction's duration has passed.
+withdraw()
+Participants can use this function to withdraw their bid amount if they were not the highest bidder or if the auction has ended.
+Modifiers
+onlyOwner: Ensures that only the owner of the contract can execute certain functions.
+
+onlyBeforeEnd: Ensures that certain functions can only be executed before the auction ends.
+
+Events
+NewBid(address bidder, uint amount): Emits when a new bid is placed.
+
+AuctionEnded(address winner, uint amount): Emits when the auction ends, specifying the winner and the winning bid amount.
+
+How to Use
+Deploy the smart contract, specifying the auction duration in minutes.
+
+Participants can call the bid() function to place bids.
+
+The owner can end the auction using the endAuction() function after the specified duration has passed.
+
+Participants can withdraw their funds using the withdraw() function if they were not the highest bidder or if the auction has ended.
